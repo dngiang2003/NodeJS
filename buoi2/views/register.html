@@ -6,6 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Đăng ký</title>
+    <style>
+        body {
+                font-family: 'Segoe UI', Roboto, Ubuntu, 'Open Sans', sans-serif;
+                background-color: #f2f2f2;
+            }
+
+        .container {
+            margin: auto;
+            margin-top: 25vh;
+            width: 330px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px #ccc;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: 500;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 12px;
+            outline: none;
+        }
+
+        input:focus {
+            background: none;
+            border: 1px solid #4CAF50;
+        }
+
+        button {
+            background-color: #4CAF50;
+            margin-top: 20px;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        img {
+            border-radius: 10px;
+        }
+
+            .menu {
+            width: 100%;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 0px 5px;
+            color: rgb(24, 21, 16);
+            font-weight: 400;
+            transition: all 0.3s;
+        }
+
+        a:hover {
+            color: rgb(25, 132, 233);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -19,8 +101,8 @@
             <input type="password" placeholder="Nhập lại mật khẩu" id="confirm_password" name="confirm_password" required>
             <button type="submit" id="btn-register" onclick="validatePassword()">Đăng ký</button>
             <div class="menu">
-                <a href="index.html">Trang chủ</a>
-                <a href="login.html">Đăng nhập</a>
+                <a href="/">Trang chủ</a>
+                <a href="login">Đăng nhập</a>
             </div>
         </form>
     </div>
@@ -31,7 +113,7 @@
     const confirmInput = document.getElementById('confirm_password');
     function validatePassword() {
         if (passwordInput.value !== confirmInput.value) {
-            confirmInput.setCustomValidity("");
+            confirmInput.setCustomValidity("Vui lòng kiểm tra lại mật khẩu!");
         } else {
             confirmInput.setCustomValidity("");
         }

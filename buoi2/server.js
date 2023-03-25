@@ -4,25 +4,22 @@
 // npm i
 
 const express = require('express');
-const path = require('path');
-
 const app = express();
+const path = require('path');
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, 'views')));
-app.set('view engine', 'html');
 
 app.get('/', (req, res) => {
-  res.render('index.html');
-})
+  res.sendFile(path.join(__dirname, '/views/index.html'));
+});
 
 app.get('/login', (req, res) => {
-  res.render('login.html');
-})
+  res.sendFile(path.join(__dirname, '/views/login.html'));
+});
 
 app.get('/register', (req, res) => {
-  res.render('register.html');
-})
+  res.sendFile(path.join(__dirname, '/views/register.html'));
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
