@@ -7,23 +7,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const router = require('./router/index');
 const port = 3000;
 
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
-
-app.get('/', (req, res) => {
-  res.render('index')
-});
-
-app.get('/login', (req, res) => {
-  res.render('login')
-});
-
-app.get('/register', (req, res) => {
-  res.render('register')
-});
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use("/static", express.static(path.join(__dirname, 'public')));
+app.use(router);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
-})
+});
