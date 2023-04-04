@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="./static/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/footer.css">
     <title>Add-product</title>
 </head>
 <body>
     <%- include("../partials/header.ejs")%>
-    <div style="margin-top: 10vh;" class="container">
-        <form method="POST">
+    <div style="margin-top: 10vh; width: 500px;" class="container">
+        <form action="/add-product" method="POST">
             <h1>Add product</h1>
             <label for="title">Title:</label>
             <input type="text" placeholder="Enter title" name="title" required>
             <label for="price">Price:</label>
-            <input type="text" placeholder="Enter price" id="Price" name="Price" required>
+            <input type="text" placeholder="Enter price" id="price" name="price" required>
             <label for="description">Description:</label>
-            <textarea name="description" id="description" rows="5" placeholder="Enter description"></textarea>
+            <textarea name="description" id="description" rows="3" placeholder="Enter description"></textarea>
             <label for="fileImage">Choice image:</label>
             <input style="border: none;" type="file" accept="image/*">
             <label for="rating">Rating:</label>
             <input type="text" placeholder="Enter rating" name="rating" required>
-            <button type="submit" id="btn-register">Add</button>
+            <button type="submit" id="btn-register">Add product</button>
             <%- include("../partials/menu.ejs")%>
         </form>
     </div>

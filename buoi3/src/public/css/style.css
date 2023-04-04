@@ -102,6 +102,8 @@ h1 {
 
 textarea {
   outline: none;
+  resize: none;
+  display:block;
 }
 
 table img {
