@@ -18,13 +18,13 @@ const getProducts = ((req, res) => {
         data = data.filter(operators[operator]);
     };
     res.status(200).json({
-        product: data
+        products: data
     });
 });
 
 
 // trả về danh sách sản phẩm sau khi thêm sản phẩm mới
-// http://localhost:3000/add-product?title=hello&rate=999&count=8
+// http://localhost:3000/product
 const createProduct = ((req, res) => {
     let data = products;
     const lastProduct = data[data.length - 1];
@@ -37,12 +37,12 @@ const createProduct = ((req, res) => {
         image = "null",
         rate = 0,
         count = 0
-    } = req.query;
+    } = req.body;
     const rating = {rate: parseFloat(rate), count: parseInt(count)};
-    const newProduct = { id, title, price, description, category, image, rating};
+    const newProduct = {id, title, price, description, category, image, rating};
     data.push(newProduct);
     res.status(200).json({
-        product: data
+        products: data
     });
 });
 
@@ -62,10 +62,10 @@ const getProductByID = ((req, res) => {
 
 
 // trả về danh sách sản phẩm sau khi sửa đổi
-// http://localhost:3000/update-product/1?title=test1&count=15
+// http://localhost:3000/product/1
 const updateProductByID = (req, res) => {
     const productID = req.params.productID;
-    const {title, price, description, category, image, rate, count} = req.query;
+    const {title, price, description, category, image, rate, count} = req.body;
     const index = products.findIndex(product => product.id == productID);
     if (index == -1) {
         return res.status(404).json({
@@ -87,26 +87,26 @@ const updateProductByID = (req, res) => {
     };
     Object.assign(data[index], newProduct);
     res.status(200).json({
-        product: data
+        products: data
     });
 };
 
 
 // trả về danh sách sản phẩm sau khi xóa
-// http://localhost:3000/delete-product/5
-// http://localhost:3000/delete-product/-5
+// http://localhost:3000/product/5
+// http://localhost:3000/product/-5
 const deleteProductByID = ((req, res) => {
     const productID = req.params.productID;
     let data = products;
     const index = products.findIndex(product => product.id == productID);
     if (index === -1) {
         return res.status(404).json({
-            'message': "Product not found!"
+            message: "Product not found!"
         });
     };
     data.splice(index, 1);
     res.status(200).json({
-        product: data
+        products: data
     });
 });
 

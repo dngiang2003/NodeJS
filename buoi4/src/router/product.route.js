@@ -9,14 +9,13 @@ const {
 
 const router = express.Router();
 
-router.get('/product', getProducts);
+router.route('/product')
+.get(getProducts)
+.post(createProduct)
 
-router.get('/product/:productID', getProductByID);
-
-router.post('/add-product', createProduct);
-
-router.put('/update-product/:productID', updateProductByID);
-
-router.delete('/delete-product/:productID', deleteProductByID);
+router.route('/product/:productID')
+.get(getProductByID)
+.put(updateProductByID)
+.delete(deleteProductByID);
 
 module.exports = router;
